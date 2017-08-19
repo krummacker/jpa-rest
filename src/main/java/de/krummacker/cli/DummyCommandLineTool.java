@@ -9,10 +9,10 @@ import java.util.Optional;
 
 /**
  * For testing the Commons CLI library. We want to have a tool that accepts the options "--verbose" and
- * "--target <value>" and prints out the choices in the form:
+ * "--target [value]" and prints out the choices in the form:
  * <p>
  * Verbose: yes/no
- * Target: <value>
+ * Target: [value]
  * <p>
  * It should also print out help if needed.
  */
