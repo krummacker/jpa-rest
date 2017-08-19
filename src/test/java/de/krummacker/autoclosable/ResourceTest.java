@@ -1,22 +1,17 @@
 package de.krummacker.autoclosable;
 
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+/**
+ * Tests the {@Resource} class.
+ */
 public class ResourceTest {
 
-    @BeforeMethod
-    public void setUp() throws Exception {
-    }
-
-    @AfterMethod
-    public void tearDown() throws Exception {
-    }
-
+    /**
+     * Uses the {@Resource} class in the old Java style.
+     */
     @Test
     public void testOldStyle() {
-
         Resource resource = null;
         try {
             resource = new Resource();
@@ -28,13 +23,14 @@ public class ResourceTest {
         }
     }
 
+    /**
+     * Uses the {@Resource} class in a try-with-resources block.
+     */
     @Test
     public void testNewStyle() {
-
         try (Resource resource = new Resource()) {
             resource.someAction();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             ;
         }
     }
