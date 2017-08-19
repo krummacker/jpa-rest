@@ -38,6 +38,7 @@ public class DummyCommandLineTool {
         Options options = defineOptions();
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         Optional<CommandLine> cmd = parseCommandLine(args, options, output);
+        //noinspection OptionalIsPresent
         if (cmd.isPresent()) {
             if (cmd.get().hasOption("h")) {
                 outputHelp(options, output);
@@ -62,7 +63,7 @@ public class DummyCommandLineTool {
     }
 
     /**
-     * Parses the specified arguments and returns a CommandLine object; or Optional.empty() if an error occured.
+     * Parses the specified arguments and returns a CommandLine object; or Optional.empty() if an error occurred.
      *
      * @param args    the arguments that were specified on the command line
      * @param options an object describing the possible options

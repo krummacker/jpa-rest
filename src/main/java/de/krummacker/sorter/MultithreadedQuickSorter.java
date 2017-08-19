@@ -1,6 +1,7 @@
 package de.krummacker.sorter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -112,8 +113,8 @@ public class MultithreadedQuickSorter<T extends Comparable> implements Sorter<T>
             }
         }
 
-        List<T> first = null;
-        List<T> last = null;
+        List<T> first;
+        List<T> last;
 
         if (deepness < threadCreationThreshold) {
 
@@ -125,6 +126,7 @@ public class MultithreadedQuickSorter<T extends Comparable> implements Sorter<T>
                 last = lastFuture.get();
             } catch (InterruptedException | ExecutionException e) {
                 e.printStackTrace();
+                return Collections.emptyList();
             }
         } else {
             first = sort(smaller, deepness + 1);

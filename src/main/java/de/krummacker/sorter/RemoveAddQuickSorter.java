@@ -53,7 +53,7 @@ public class RemoveAddQuickSorter<T extends Comparable> implements Sorter<T> {
     public List<T> sort(List<T> input) {
 
         // The provided list may be immutable and not support add nor remove, hence creating a copy.
-        List copy = new ArrayList(input);
+        List<T> copy = new ArrayList<>(input);
         sort(copy, 0, input.size() - 1);
         return copy;
     }

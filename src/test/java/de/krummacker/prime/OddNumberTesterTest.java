@@ -54,7 +54,7 @@ public class OddNumberTesterTest {
     /**
      * Make sure that Integer.MAX_VALUE is considered odd.
      */
-    // @Test not executed, takes 6 seconds and thus too long
+    @Test
     public void testIntegerMAX_VALUEPrime() throws Exception {
         Assert.assertTrue(oddNumberTester.isOdd(Integer.MAX_VALUE));
     }
