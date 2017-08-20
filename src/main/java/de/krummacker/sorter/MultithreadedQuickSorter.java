@@ -15,7 +15,7 @@ import java.util.concurrent.Future;
  *
  * @param <T> the type of objects to be sorted
  */
-public class MultithreadedQuickSorter<T extends Comparable> implements Sorter<T> {
+public class MultithreadedQuickSorter<T extends Comparable<T>> implements Sorter<T> {
 
     /**
      * The thread pool with the threads that do the sorting work.

@@ -9,7 +9,7 @@ import java.util.List;
  *
  * @param <T> the type of objects to be sorted
  */
-public class MedianQuickSorter<T extends Comparable> implements Sorter<T> {
+public class MedianQuickSorter<T extends Comparable<T>> implements Sorter<T> {
 
     /**
      * Creates a new MedianQuickSorter.

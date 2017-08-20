@@ -2,6 +2,7 @@ package de.krummacker.sorter;
 
 import de.krummacker.tools.Tools;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -12,19 +13,18 @@ public class SorterPerformanceTester {
     public static void main(String[] args) {
 
         // Sorters are ordered by resilience against stack overflow errors and then performance.
-        Sorter<Integer>[] sorters = new Sorter[]{
+        List<Sorter<Integer>> sorters = Arrays.asList(
                 new RemoveAddQuickSorter<Integer>(),
                 new QuickSorter<Integer>(),
                 new RandomPivotQuickSorter<Integer>(),
                 new BubbleSorter<Integer>(),
                 new MedianQuickSorter<Integer>(),
                 new MultithreadedQuickSorter<Integer>(),
-                new StandardApiSorter(),
-        };
+                new StandardApiSorter<Integer>());
 
         for (int i = 1000; i <= 8000; i += 1000) {
             System.out.print("Number of elements: " + i + "; ");
-            for (Sorter sorter : sorters) {
+            for (Sorter<Integer> sorter : sorters) {
                 List<Integer> input = Tools.createRandomList(i);
 
                 long before = System.currentTimeMillis();

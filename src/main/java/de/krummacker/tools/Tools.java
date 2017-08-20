@@ -40,7 +40,7 @@ public class Tools {
      * @return the median, one of a, b, or c
      * @throws NullPointerException if any of the arguments is null
      */
-    public static <T extends Comparable> T computeMedian(T a, T b, T c) {
+    static <T extends Comparable<T>> T computeMedian(T a, T b, T c) {
         if (a.compareTo(b) > 0) {
             if (b.compareTo(c) > 0) {
                 return b;

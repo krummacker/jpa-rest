@@ -1,12 +1,13 @@
 package de.krummacker.autoclosable;
 
 /**
- * A {@Resource} is something that can do something and that can be closed.
+ * A Resource is something that can do something and that can be closed.
  */
+@SuppressWarnings("WeakerAccess")
 public class Resource implements AutoCloseable {
 
     /**
-     * Creates a new {@Resource}.
+     * Creates a new Resource.
      *
      * @throws Exception if something went wrong. Should not happen.
      */
@@ -24,6 +25,6 @@ public class Resource implements AutoCloseable {
 
     @Override
     public void close() {
-        ;
+        // do  nothing
     }
 }

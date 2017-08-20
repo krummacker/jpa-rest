@@ -10,7 +10,7 @@ import java.util.Random;
  *
  * @param <T> the type of objects to be sorted
  */
-public class RandomPivotQuickSorter<T extends Comparable> implements Sorter<T> {
+public class RandomPivotQuickSorter<T extends Comparable<T>> implements Sorter<T> {
 
     private static Random random;
 

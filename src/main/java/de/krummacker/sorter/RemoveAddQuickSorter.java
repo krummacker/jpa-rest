@@ -9,7 +9,7 @@ import java.util.List;
  *
  * @param <T> the type of objects to be sorted
  */
-public class RemoveAddQuickSorter<T extends Comparable> implements Sorter<T> {
+public class RemoveAddQuickSorter<T extends Comparable<T>> implements Sorter<T> {
 
     /**
      * Creates a new QuickSorter.

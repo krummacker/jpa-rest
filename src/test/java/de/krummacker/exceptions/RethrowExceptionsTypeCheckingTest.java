@@ -12,6 +12,7 @@ public class RethrowExceptionsTypeCheckingTest {
     }
 
     public void rethrowException(String exceptionName) throws FirstException, SecondException {
+        //noinspection CaughtExceptionImmediatelyRethrown
         try {
             if (exceptionName.equals("First")) {
                 throw new FirstException();

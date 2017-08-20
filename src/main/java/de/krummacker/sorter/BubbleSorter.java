@@ -8,7 +8,7 @@ import java.util.List;
  *
  * @param <T> the type of objects to be sorted
  */
-public class BubbleSorter<T extends Comparable> implements Sorter<T> {
+public class BubbleSorter<T extends Comparable<T>> implements Sorter<T> {
 
     /**
      * Creates a new BubbleSorter.

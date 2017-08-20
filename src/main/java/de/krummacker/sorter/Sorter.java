@@ -8,7 +8,7 @@ import java.util.List;
  *
  * @param <T> The type of the objects to be sorted. Must implement the Comparable interface
  */
-public interface Sorter<T extends Comparable> {
+public interface Sorter<T extends Comparable<T>> {
 
     /**
      * Sorts the specified list and returns the result. Does not change the parameter.
