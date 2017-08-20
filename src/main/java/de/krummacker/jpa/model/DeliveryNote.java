@@ -17,7 +17,7 @@ public class DeliveryNote {
     private Date shippingDate;
 
     @OneToMany(mappedBy = "container", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-    private List<DeliveryNoteItem> items = new ArrayList<>();
+    private final List<DeliveryNoteItem> items = new ArrayList<>();
 
     protected DeliveryNote() {
     }

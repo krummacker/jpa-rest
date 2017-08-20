@@ -12,7 +12,7 @@ import static com.fasterxml.jackson.annotation.JsonProperty.Access.WRITE_ONLY;
 public class Employee extends Person {
 
     @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Phone> phones = new ArrayList<>();
+    private final List<Phone> phones = new ArrayList<>();
 
     protected Employee() {
     }

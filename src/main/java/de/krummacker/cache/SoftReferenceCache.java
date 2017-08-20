@@ -10,8 +10,8 @@ import java.util.HashMap;
  */
 public class SoftReferenceCache<T> implements Cache<T> {
 
-    private HashMap<Serializable, SoftReference<T>> map = new HashMap<>();
-    private Cache<T> wrapped;
+    private final HashMap<Serializable, SoftReference<T>> map = new HashMap<>();
+    private final Cache<T> wrapped;
 
     /**
      * Creates a new SoftReferenceCache that wraps the specified Cache. This Cache implementation works like the

@@ -11,6 +11,7 @@ public class Resource implements AutoCloseable {
      *
      * @throws Exception if something went wrong. Should not happen.
      */
+    @SuppressWarnings("RedundantThrows")
     public Resource() throws Exception {
     }
 

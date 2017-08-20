@@ -16,7 +16,7 @@ public class TimeoutCacheTest {
      */
     private final class MockCache implements Cache<Serializable> {
 
-        private Set<Serializable> invalidatedKeys = new HashSet<>();
+        private final Set<Serializable> invalidatedKeys = new HashSet<>();
 
         @Override
         public Serializable get(Serializable key) {

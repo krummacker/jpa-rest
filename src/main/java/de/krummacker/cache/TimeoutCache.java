@@ -23,22 +23,22 @@ public class TimeoutCache<T> implements Cache<T> {
             this.key = key;
         }
 
-        long timestamp;
-        Serializable key;
+        final long timestamp;
+        final Serializable key;
     }
 
     /**
      * A history of which key was called when.
      */
-    private LinkedList<TimeKeyEntry> accessEntries = new LinkedList<>();
+    private final LinkedList<TimeKeyEntry> accessEntries = new LinkedList<>();
 
     /**
      * Needed for quick decision-making whether a certain key was already retrieved during the timeout period.
      */
-    private Set<Serializable> accessKeys = new HashSet<>();
+    private final Set<Serializable> accessKeys = new HashSet<>();
 
-    private Cache<T> wrapped;
-    private long timeoutInMillis;
+    private final Cache<T> wrapped;
+    private final long timeoutInMillis;
 
     public TimeoutCache(Cache<T> wrapped, long timeoutInMillis) {
         this.wrapped = wrapped;

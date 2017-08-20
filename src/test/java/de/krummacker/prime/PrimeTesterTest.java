@@ -95,6 +95,7 @@ public class PrimeTesterTest {
      * Make sure that Integer.MAX_VALUE is considered a prime, Joshua Bloch stated it so it must be true.
      */
     // @Test not executed, takes 6 seconds and thus too long
+    @SuppressWarnings("unused")
     public void testIntegerMAX_VALUEPrime() throws Exception {
         Assert.assertTrue(primeTester.isPrime(Integer.MAX_VALUE));
     }

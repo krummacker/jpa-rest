@@ -10,8 +10,8 @@ import java.util.HashMap;
  */
 public class HashMapCache<T> implements Cache<T> {
 
-    private HashMap<Serializable, T> map = new HashMap<>();
-    private Cache<T> wrapped;
+    private final HashMap<Serializable, T> map = new HashMap<>();
+    private final Cache<T> wrapped;
 
     /**
      * Creates a new HashMapCache that wraps the specified Cache. Use this constructor if you want to cache the values
@@ -25,7 +25,7 @@ public class HashMapCache<T> implements Cache<T> {
 
     @Override
     public T get(Serializable key) {
-        return map.computeIfAbsent(key, k -> wrapped.get(k));
+        return map.computeIfAbsent(key, wrapped::get);
     }
 
     @Override

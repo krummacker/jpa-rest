@@ -8,6 +8,7 @@ import java.util.TimeZone;
 /**
  * Tests if Java respects the leap second.
  */
+@SuppressWarnings("unused")
 public class DateTest {
 
     /**
