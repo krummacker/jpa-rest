@@ -42,9 +42,12 @@ public class HashMapCacheTest {
      */
     @Test
     public void testGet() throws Exception {
+
         //noinspection RedundantStringConstructorCall
         String first = new String("id");
+        //noinspection RedundantStringConstructorCall
         String second = new String("id");
+
         Serializable firstResult = cache.get(first);
         Serializable secondResult = cache.get(second);
         Assert.assertTrue(firstResult == secondResult);
@@ -55,8 +58,12 @@ public class HashMapCacheTest {
      */
     @Test
     public void testInvalidateGet() throws Exception {
+
+        //noinspection RedundantStringConstructorCall
         String first = new String("id");
+        //noinspection RedundantStringConstructorCall
         String second = new String("id");
+
         //noinspection StringEquality
         Assert.assertTrue(first != second);
         Serializable firstResult = cache.get(first);
