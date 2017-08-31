@@ -8,6 +8,7 @@ import de.krummacker.jpa.repositories.EmployeeRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,6 +33,9 @@ public class AdminRestController {
     @Autowired
     private DepartmentRepository departmentRepository;
 
+    @Value("${setup.users}")
+    private int setupUsers;
+
     @RequestMapping(value = "/admin/shutdown", method = RequestMethod.PUT)
     public void shutdown() {
         log.info("Received shutdown request. Exiting.");
@@ -48,7 +52,7 @@ public class AdminRestController {
         customerRepository.save(new Customer("Michelle", "Dessler", Customer.Rating.NEW));
         customerRepository.save(new Customer("Dirk", "Krummacker", Customer.Rating.TRUSTED));
 
-        for (int i = 0; i < 5000; ++i) {
+        for (int i = 0; i < setupUsers; ++i) {
             String firstName = UUID.randomUUID().toString();
             String lastName = UUID.randomUUID().toString();
             customerRepository.save(new Customer(firstName, lastName, Customer.Rating.NEW));
