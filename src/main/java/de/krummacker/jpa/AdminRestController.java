@@ -41,6 +41,7 @@ public class AdminRestController {
 
     @RequestMapping(value = "/admin/setup/{count}", method = RequestMethod.PUT)
     public void setup(@PathVariable Integer count) {
+        log.info("Endpoint 'setup' called with parameter {}", count);
 
         for (int i = 0; i < count; ++i) {
 
