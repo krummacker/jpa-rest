@@ -15,8 +15,6 @@ public class DummyCommandLineToolTest {
         Assert.assertTrue(output.startsWith("usage"));
     }
 
-    // This is a severe bug.
-
     /**
      * Make sure that the target value is rendered correctly.
      */
