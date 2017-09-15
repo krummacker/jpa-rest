@@ -11,7 +11,7 @@ public class RethrowExceptionsTypeCheckingTest {
     static class SecondException extends Exception {
     }
 
-    public void rethrowException(String exceptionName) throws FirstException, SecondException {
+    private void rethrowException(String exceptionName) throws FirstException, SecondException {
         //noinspection CaughtExceptionImmediatelyRethrown
         try {
             if (exceptionName.equals("First")) {
@@ -28,6 +28,16 @@ public class RethrowExceptionsTypeCheckingTest {
     public void testRethrowExceptionsTypeCheckingTest() {
         try {
             rethrowException("First");
+        } catch (Exception e) {
+            return;
+        }
+        Assert.fail();
+    }
+
+    @Test
+    public void testRethrowExceptionsTypeCheckingTestOtherValue() {
+        try {
+            rethrowException("Second");
         } catch (Exception e) {
             return;
         }

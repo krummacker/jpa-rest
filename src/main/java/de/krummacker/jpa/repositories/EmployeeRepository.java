@@ -5,6 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
+@SuppressWarnings("unused")
 public interface EmployeeRepository extends CrudRepository<Employee, Long> {
 
     List<Employee> findByLastName(String lastName);

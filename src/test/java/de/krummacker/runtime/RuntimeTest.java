@@ -1,7 +1,6 @@
 package de.krummacker.runtime;
 
 import org.testng.Assert;
-import org.testng.annotations.Test;
 
 /**
  * Tests how many processors this laptop has.
