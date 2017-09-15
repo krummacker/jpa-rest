@@ -38,7 +38,7 @@ public class HashMapCacheTest {
     }
 
     /**
-     * Make sure that a second get returns then same object as the first get has returned before.
+     * Make sure that a second get returns the same object as the first get has returned before.
      */
     @Test
     public void testGet() throws Exception {
