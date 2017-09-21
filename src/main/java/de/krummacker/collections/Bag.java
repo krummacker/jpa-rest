@@ -16,7 +16,7 @@ public class Bag<E> extends AbstractCollection<E> {
 
     private E[] contents = (E[]) new Object[0];
 
-    private transient int modCount = 0;
+    private int modCount = 0;
 
     /**
      * Ensures that this bag contains the specified element.
@@ -29,7 +29,7 @@ public class Bag<E> extends AbstractCollection<E> {
     public boolean add(E o) {
         E[] tmp = (E[]) new Object[contents.length + 1];
         System.arraycopy(contents, 0, tmp, 0, contents.length);
-        tmp[contents.length] = (E) o;
+        tmp[contents.length] = o;
         contents = tmp;
         modCount++;
         return true;
@@ -48,10 +48,12 @@ public class Bag<E> extends AbstractCollection<E> {
 
         private int expectedModCount = modCount;
 
+        @Override
         public boolean hasNext() {
             return index < contents.length;
         }
 
+        @Override
         public E next() {
 
             if (modCount != expectedModCount) {
@@ -68,6 +70,7 @@ public class Bag<E> extends AbstractCollection<E> {
             return result;
         }
 
+        @Override
         public void remove() {
 
             if (modCount != expectedModCount) {

@@ -2,6 +2,8 @@ package de.krummacker.autoclosable;
 
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+
 /**
  * Tests the Resource class.
  */
@@ -16,7 +18,7 @@ public class ResourceTest {
         try {
             resource = new Resource();
             resource.someAction();
-        } catch (Exception e) {
+        } catch (IOException e) {
             // do  nothing
         } finally {
             if (resource != null) {
@@ -32,7 +34,7 @@ public class ResourceTest {
     public void testNewStyle() {
         try (Resource resource = new Resource()) {
             resource.someAction();
-        } catch (Exception e) {
+        } catch (IOException e) {
             // do  nothing
         }
     }

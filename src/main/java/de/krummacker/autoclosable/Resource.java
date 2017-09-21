@@ -1,5 +1,7 @@
 package de.krummacker.autoclosable;
 
+import java.io.IOException;
+
 /**
  * A Resource is something that can do something and that can be closed.
  */
@@ -9,19 +11,20 @@ public class Resource implements AutoCloseable {
     /**
      * Creates a new Resource.
      *
-     * @throws Exception if something went wrong. Should not happen.
+     * @throws IOException if something went wrong. Should not happen.
      */
     @SuppressWarnings("RedundantThrows")
-    public Resource() throws Exception {
+    public Resource() throws IOException {
+        // intentionally doing nothing
     }
 
     /**
      * Attempts to do something but always fails.
      *
-     * @throws Exception always thrown
+     * @throws IOException always thrown
      */
-    public void someAction() throws Exception {
-        throw new Exception();
+    public void someAction() throws IOException {
+        throw new IOException();
     }
 
     @Override

@@ -15,6 +15,7 @@ public class MedianQuickSorter<T extends Comparable<T>> implements Sorter<T> {
      * Creates a new MedianQuickSorter.
      */
     public MedianQuickSorter() {
+        // Intentionally left empty
     }
 
     /**
@@ -24,7 +25,7 @@ public class MedianQuickSorter<T extends Comparable<T>> implements Sorter<T> {
      * @param input the list of which the best pivot index should be computed
      * @return the index of the pivot
      */
-    private int determinePivotIndex(List<T> input) {
+    protected int determinePivotIndex(List<T> input) {
 
         int startIndex = 0;
         int middleIndex = input.size() / 2;
@@ -38,21 +39,13 @@ public class MedianQuickSorter<T extends Comparable<T>> implements Sorter<T> {
             if (b.compareTo(c) > 0) {
                 return middleIndex;
             } else {
-                if (a.compareTo(c) > 0) {
-                    return endIndex;
-                } else {
-                    return startIndex;
-                }
+                return a.compareTo(c) > 0 ? endIndex : startIndex;
             }
         } else {
             if (b.compareTo(c) < 0) {
                 return middleIndex;
             } else {
-                if (a.compareTo(c) < 0) {
-                    return endIndex;
-                } else {
-                    return startIndex;
-                }
+                return a.compareTo(c) < 0 ? endIndex : startIndex;
             }
         }
     }

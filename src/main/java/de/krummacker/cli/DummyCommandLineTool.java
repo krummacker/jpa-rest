@@ -19,6 +19,13 @@ import java.util.Optional;
 public class DummyCommandLineTool {
 
     /**
+     * Set to private in order to prevent instantiation.
+     */
+    private DummyCommandLineTool() {
+        // Intentionally left empty
+    }
+
+    /**
      * Called by the VM on program start.
      *
      * @param args the arguments specified on the command line

@@ -62,7 +62,7 @@ public class DeliveryNoteItem {
     public void setContainer(DeliveryNote container) {
         this.container = container;
         // warning this may cause performance issues if you have a large data set since this operation is O(n)
-        if (!container.getItems().contains(this)) {
+        if (container != null && !container.getItems().contains(this)) {
             container.getItems().add(this);
         }
     }

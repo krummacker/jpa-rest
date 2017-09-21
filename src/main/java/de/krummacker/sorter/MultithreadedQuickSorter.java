@@ -1,5 +1,8 @@
 package de.krummacker.sorter;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -15,7 +18,9 @@ import java.util.concurrent.Future;
  *
  * @param <T> the type of objects to be sorted
  */
-public class MultithreadedQuickSorter<T extends Comparable<T>> implements Sorter<T> {
+public class MultithreadedQuickSorter<T extends Comparable<T>> extends MedianQuickSorter<T> {
+
+    private static final Logger log = LoggerFactory.getLogger(MultithreadedQuickSorter.class);
 
     /**
      * The thread pool with the threads that do the sorting work.
@@ -32,46 +37,7 @@ public class MultithreadedQuickSorter<T extends Comparable<T>> implements Sorter
      * Creates a new MultithreadedQuickSorter.
      */
     public MultithreadedQuickSorter() {
-    }
-
-    /**
-     * Determines the index of the best pivot for the specified list. It is the median of the first, middle and last
-     * element of the list.
-     *
-     * @param input the list of which the best pivot index should be computed
-     * @return the index of the pivot
-     */
-    private int determinePivotIndex(List<T> input) {
-
-        int startIndex = 0;
-        int middleIndex = input.size() / 2;
-        int endIndex = input.size() - 1;
-
-        T a = input.get(startIndex);
-        T b = input.get(middleIndex);
-        T c = input.get(endIndex);
-
-        if (a.compareTo(b) > 0) {
-            if (b.compareTo(c) > 0) {
-                return middleIndex;
-            } else {
-                if (a.compareTo(c) > 0) {
-                    return endIndex;
-                } else {
-                    return startIndex;
-                }
-            }
-        } else {
-            if (b.compareTo(c) < 0) {
-                return middleIndex;
-            } else {
-                if (a.compareTo(c) < 0) {
-                    return endIndex;
-                } else {
-                    return startIndex;
-                }
-            }
-        }
+        // Intentionally left empty
     }
 
     @Override
@@ -104,7 +70,9 @@ public class MultithreadedQuickSorter<T extends Comparable<T>> implements Sorter
 
         // This is a very old-fashioned way to iterate a list but it allows us to skip the pivot element.
         for (int i = 0; i < input.size(); ++i) {
-            if (i == pivotIndex) continue;
+            if (i == pivotIndex) {
+                continue;
+            }
             T element = input.get(i);
             if (element.compareTo(pivot) < 0) {
                 smaller.add(element);
@@ -125,7 +93,7 @@ public class MultithreadedQuickSorter<T extends Comparable<T>> implements Sorter
                 first = firstFuture.get();
                 last = lastFuture.get();
             } catch (InterruptedException | ExecutionException e) {
-                e.printStackTrace();
+                log.error("caught unexpected exception while dealing with Future", e);
                 return Collections.emptyList();
             }
         } else {
