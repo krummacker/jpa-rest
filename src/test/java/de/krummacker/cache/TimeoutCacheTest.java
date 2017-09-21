@@ -109,4 +109,18 @@ public class TimeoutCacheTest {
         Assert.assertTrue(mockCache.isInvalidated());
         Assert.assertEquals(mockCache.invalidatedKeys.size(), 3);
     }
+
+    /**
+     * Make sure that calling the invalidate() method really invalidates the TimeoutCache and the underlying
+     * cache.
+     */
+    @Test
+    public void testInvalidate() throws Exception {
+
+        String key = "key";
+        timeoutCache.get(key);
+        timeoutCache.invalidate(key);
+
+        Assert.assertTrue(mockCache.isInvalidated());
+    }
 }
