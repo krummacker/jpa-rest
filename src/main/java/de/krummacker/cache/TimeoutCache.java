@@ -18,13 +18,13 @@ public class TimeoutCache<T> implements Cache<T> {
      */
     private static class TimeKeyEntry {
 
+        final long timestamp;
+        final Serializable key;
+
         TimeKeyEntry(long timestamp, Serializable key) {
             this.timestamp = timestamp;
             this.key = key;
         }
-
-        final long timestamp;
-        final Serializable key;
     }
 
     /**
