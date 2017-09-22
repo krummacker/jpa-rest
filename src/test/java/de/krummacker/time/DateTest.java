@@ -1,6 +1,7 @@
 package de.krummacker.time;
 
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.util.Calendar;
 import java.util.TimeZone;
@@ -8,7 +9,6 @@ import java.util.TimeZone;
 /**
  * Tests if Java respects the leap second.
  */
-@SuppressWarnings("unused")
 public class DateTest {
 
     /**
@@ -30,5 +30,11 @@ public class DateTest {
         utcCalendar.add(Calendar.SECOND, 1); // add a second
         Assert.assertEquals(utcCalendar.get(Calendar.SECOND), 60);
         Assert.assertEquals(utcCalendar.get(Calendar.YEAR), 1998);
+    }
+
+    @Test
+    public void testFactoryMethod() {
+        Calendar utcCalendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+        Assert.assertNotNull(utcCalendar);
     }
 }

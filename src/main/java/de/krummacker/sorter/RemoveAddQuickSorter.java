@@ -15,6 +15,7 @@ public class RemoveAddQuickSorter<T extends Comparable<T>> implements Sorter<T> 
      * Creates a new QuickSorter.
      */
     public RemoveAddQuickSorter() {
+        // Intentionally left empty
     }
 
     /**

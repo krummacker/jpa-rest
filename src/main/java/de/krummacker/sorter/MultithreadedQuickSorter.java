@@ -59,27 +59,10 @@ public class MultithreadedQuickSorter<T extends Comparable<T>> extends MedianQui
             return input;
         }
 
-        int pivotIndex = determinePivotIndex(input);
-        T pivot = input.get(pivotIndex);
+        PivotSplitter pivotSplitter = new PivotSplitter(input).invoke();
 
-        // This implementation creates new lists in every step but this has turned out to be quicker than using the
-        // add() and remove() methods in ArrayList. Let's make each sub list as big as the input list, just in case.
-        // This way we avoid rebuilding the internal array.
-        List<T> smaller = new ArrayList<>(input.size());
-        List<T> bigger = new ArrayList<>(input.size());
-
-        // This is a very old-fashioned way to iterate a list but it allows us to skip the pivot element.
-        for (int i = 0; i < input.size(); ++i) {
-            if (i == pivotIndex) {
-                continue;
-            }
-            T element = input.get(i);
-            if (element.compareTo(pivot) < 0) {
-                smaller.add(element);
-            } else {
-                bigger.add(element);
-            }
-        }
+        List<T> smaller = pivotSplitter.getSmaller();
+        List<T> bigger = pivotSplitter.getBigger();
 
         List<T> first;
         List<T> last;
@@ -103,7 +86,7 @@ public class MultithreadedQuickSorter<T extends Comparable<T>> extends MedianQui
 
         List<T> result = new ArrayList<>(input.size());
         result.addAll(first);
-        result.add(pivot);
+        result.add(pivotSplitter.getPivot());
         result.addAll(last);
         return result;
     }

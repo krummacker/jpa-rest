@@ -45,21 +45,13 @@ public class Tools {
             if (b.compareTo(c) > 0) {
                 return b;
             } else {
-                if (a.compareTo(c) > 0) {
-                    return c;
-                } else {
-                    return a;
-                }
+                return a.compareTo(c) > 0 ? c : a;
             }
         } else {
             if (b.compareTo(c) < 0) {
                 return b;
             } else {
-                if (a.compareTo(c) < 0) {
-                    return c;
-                } else {
-                    return a;
-                }
+                return a.compareTo(c) < 0 ? c : a;
             }
         }
     }

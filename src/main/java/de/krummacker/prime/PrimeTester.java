@@ -9,6 +9,7 @@ public class PrimeTester {
      * Creates a PrimeTester.
      */
     public PrimeTester() {
+        // Intentionally left empty
     }
 
     /**

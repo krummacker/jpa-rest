@@ -14,6 +14,7 @@ public class BubbleSorter<T extends Comparable<T>> implements Sorter<T> {
      * Creates a new BubbleSorter.
      */
     public BubbleSorter() {
+        // Intentionally left empty
     }
 
     @Override

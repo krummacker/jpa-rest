@@ -8,6 +8,7 @@ import java.util.List;
  *
  * @param <T> The type of the objects to be sorted. Must implement the Comparable interface
  */
+@FunctionalInterface
 public interface Sorter<T extends Comparable<T>> {
 
     /**

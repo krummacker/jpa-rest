@@ -15,6 +15,7 @@ public class QuickSorter<T extends Comparable<T>> implements Sorter<T> {
      * Creates a new QuickSorter.
      */
     public QuickSorter() {
+        // Intentionally left empty
     }
 
     @Override

@@ -9,6 +9,7 @@ public class OddNumberTester {
      * Creates an OddNumberTester.
      */
     public OddNumberTester() {
+        // Intentionally left empty
     }
 
     /**

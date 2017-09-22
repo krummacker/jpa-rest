@@ -54,12 +54,6 @@ public class AdminRestController {
         // Intentionally left empty
     }
 
-    @RequestMapping(value = "/admin/shutdown", method = RequestMethod.PUT)
-    public void shutdown() {
-        log.info("Received shutdown request. Exiting.");
-        System.exit(0);
-    }
-
     @RequestMapping(value = "/admin/setup/{count}", method = RequestMethod.PUT)
     public void setup(@PathVariable Integer count) {
         log.info("Endpoint 'setup' called with parameter {}", count);

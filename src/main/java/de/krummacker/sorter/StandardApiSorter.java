@@ -14,6 +14,7 @@ public class StandardApiSorter<T extends Comparable<T>> implements Sorter<T> {
      * Creates a new StandardApiSorter.
      */
     public StandardApiSorter() {
+        // Intentionally left empty
     }
 
     @Override

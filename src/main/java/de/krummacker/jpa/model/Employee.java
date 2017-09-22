@@ -14,17 +14,17 @@ public class Employee extends Person {
     @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private final List<Phone> phones = new ArrayList<>();
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "department_id")
+    @JsonProperty(access = WRITE_ONLY)
+    private Department department;
+
     protected Employee() {
     }
 
     public Employee(String firstName, String lastName) {
         super(firstName, lastName);
     }
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "department_id")
-    @JsonProperty(access = WRITE_ONLY)
-    private Department department;
 
     @Override
     public String toString() {
