@@ -33,6 +33,27 @@ public class AdminRestController {
     @Autowired
     private DepartmentRepository departmentRepository;
 
+    /**
+     * Creates a new instance of this class with all member fields set by the constructor's arguments. To be used in
+     * unit tests.
+     */
+    AdminRestController(EmployeeRepository employeeRepository,
+                        CustomerRepository customerRepository,
+                        DeliveryNoteRepository deliveryNoteRepository,
+                        DepartmentRepository departmentRepository) {
+        this.employeeRepository = employeeRepository;
+        this.customerRepository = customerRepository;
+        this.deliveryNoteRepository = deliveryNoteRepository;
+        this.departmentRepository = departmentRepository;
+    }
+
+    /**
+     * Default constructor, to be used by Spring.
+     */
+    public AdminRestController() {
+        // Intentionally left empty
+    }
+
     @RequestMapping(value = "/admin/shutdown", method = RequestMethod.PUT)
     public void shutdown() {
         log.info("Received shutdown request. Exiting.");
