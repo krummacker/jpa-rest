@@ -48,7 +48,7 @@ public class Phone {
     public void setOwner(Employee employee) {
         this.owner = employee;
         // warning this may cause performance issues if you have a large data set since this operation is O(n)
-        if (!employee.getPhones().contains(this)) {
+        if (employee != null && !employee.getPhones().contains(this)) {
             employee.getPhones().add(this);
         }
     }

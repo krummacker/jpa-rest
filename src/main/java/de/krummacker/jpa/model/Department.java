@@ -43,8 +43,8 @@ public class Department {
     }
 
     public void addMember(Employee member) {
-        this.members.add(member);
         if (member.getDepartment() != this) {
+            this.members.add(member);
             member.setDepartment(this);
         }
     }
