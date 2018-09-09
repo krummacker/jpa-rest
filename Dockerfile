@@ -1,5 +1,5 @@
 # We want Java 8.
-FROM openjdk:latest
+FROM openjdk:8
 
 # The JAR file is the only thing we need. It is created by "mvn package".
 COPY target/jpa-rest-0.1.0.jar /usr/src/jpa-rest-0.1.0.jar
