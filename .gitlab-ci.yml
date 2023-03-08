@@ -3,8 +3,11 @@ image: maven:latest
 stages:
   - test
 
-test:
+maven:
   stage: test
+  cache:
+    paths:
+      - .m2/repository
   script:
     - mvn --version
     - mvn test
@@ -13,6 +16,6 @@ test:
     paths:
       - target/dependency-check-report.html
 
-# test stage
+# included in test stage
 include:
   - template: Jobs/SAST.gitlab-ci.yml
