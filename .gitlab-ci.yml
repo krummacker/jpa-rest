@@ -8,6 +8,10 @@ test:
   script:
     - mvn --version
     - mvn test
+    - mvn verify # runs OWASP dependency-check
+  artifacts:
+    paths:
+      - target/dependency-check-report.html
 
 # test stage
 include:
