@@ -18,6 +18,6 @@ maven:
     paths:
       - target/dependency-check-report.html
 
-# jobs included in test stage
+# included in test stage
 include:
   - template: Jobs/SAST.gitlab-ci.yml
