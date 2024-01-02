@@ -1,7 +1,6 @@
 package de.krummacker.jpa.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import jakarta.persistence.*;
 
 import static com.fasterxml.jackson.annotation.JsonProperty.Access.WRITE_ONLY;
@@ -11,6 +10,7 @@ public class DeliveryNoteItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @SuppressWarnings("all")
     private Long id;
 
     private int amount;
@@ -22,6 +22,10 @@ public class DeliveryNoteItem {
     @JsonProperty(access = WRITE_ONLY)
     private DeliveryNote container;
 
+    /**
+     * This constructor is used by the JPA framework.
+     */
+    @SuppressWarnings("all")
     protected DeliveryNoteItem() {
     }
 

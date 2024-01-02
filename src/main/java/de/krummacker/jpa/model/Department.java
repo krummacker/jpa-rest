@@ -1,6 +1,7 @@
 package de.krummacker.jpa.model;
 
 import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +10,7 @@ public class Department {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @SuppressWarnings("all")
     private Long id;
 
     private String name;
@@ -16,6 +18,10 @@ public class Department {
     @OneToMany(mappedBy = "department", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private final List<Employee> members = new ArrayList<>();
 
+    /**
+     * This constructor is used by the JPA framework.
+     */
+    @SuppressWarnings("all")
     protected Department() {
     }
 

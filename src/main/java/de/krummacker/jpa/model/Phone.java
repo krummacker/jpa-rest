@@ -1,7 +1,6 @@
 package de.krummacker.jpa.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import jakarta.persistence.*;
 
 import static com.fasterxml.jackson.annotation.JsonProperty.Access.WRITE_ONLY;
@@ -11,6 +10,7 @@ public class Phone {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @SuppressWarnings("all")
     private Long id;
 
     private String number;
@@ -20,6 +20,10 @@ public class Phone {
     @JsonProperty(access = WRITE_ONLY)
     private Employee owner;
 
+    /**
+     * This constructor is used by the JPA framework.
+     */
+    @SuppressWarnings("all")
     protected Phone() {
     }
 

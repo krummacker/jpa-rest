@@ -1,8 +1,8 @@
 package de.krummacker.jpa.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +19,10 @@ public class Employee extends Person {
     @JsonProperty(access = WRITE_ONLY)
     private Department department;
 
+    /**
+     * This constructor is used by the JPA framework.
+     */
+    @SuppressWarnings("all")
     protected Employee() {
     }
 

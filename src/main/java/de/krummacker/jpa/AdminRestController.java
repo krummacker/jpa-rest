@@ -16,7 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Calendar;
 import java.util.UUID;
 
+/**
+ * Default constructor, to be used by Spring.
+ */
 @RestController
+@SuppressWarnings("all")
 public class AdminRestController {
 
     private static final Logger log = LoggerFactory.getLogger(AdminRestController.class);

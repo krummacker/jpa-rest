@@ -11,6 +11,10 @@ public class Customer extends Person {
 
     private Rating rating;
 
+    /**
+     * This constructor is used by the JPA framework.
+     */
+    @SuppressWarnings("all")
     protected Customer() {
     }
 

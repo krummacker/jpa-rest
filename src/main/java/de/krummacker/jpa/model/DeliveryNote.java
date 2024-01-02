@@ -1,6 +1,7 @@
 package de.krummacker.jpa.model;
 
 import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -10,15 +11,20 @@ public class DeliveryNote {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @SuppressWarnings("all")
     private Long id;
 
     private int deliveryNoteNumber;
     private int shopNumber;
     private Date shippingDate;
 
-    @OneToMany(mappedBy = "container", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+    @OneToMany(mappedBy = "container", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private final List<DeliveryNoteItem> items = new ArrayList<>();
 
+    /**
+     * This constructor is used by the JPA framework.
+     */
+    @SuppressWarnings("all")
     protected DeliveryNote() {
     }
 

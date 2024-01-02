@@ -10,11 +10,16 @@ public abstract class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @SuppressWarnings("all")
     private Long id;
 
     private String firstName;
     private String lastName;
 
+    /**
+     * This constructor is used by the JPA framework.
+     */
+    @SuppressWarnings("all")
     protected Person() {
     }
 
