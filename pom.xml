@@ -58,6 +58,9 @@
                 <configuration>
                     <failBuildOnCVSS>7</failBuildOnCVSS>
                     <ossIndexServerId>ossindex</ossIndexServerId>
+                    <suppressionFiles>
+                        <suppressionFile>${project.basedir}/dependency-check-suppressions.xml</suppressionFile>
+                    </suppressionFiles>
                 </configuration>
                 <executions>
                     <execution>
