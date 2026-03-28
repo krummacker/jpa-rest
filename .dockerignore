@@ -1,0 +1,7 @@
+.git
+.idea
+.mvn
+src
+target/*
+!target/*.jar
+README*
