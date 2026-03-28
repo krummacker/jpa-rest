@@ -1,9 +1,12 @@
 stages:
   - test
+  - package
+  - build
 
 variables:
   MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
   MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end --show-version"
+  DOCKER_TLS_CERTDIR: "/certs"
 
 cache:
   paths:
@@ -66,6 +69,32 @@ trivy:
     paths:
       - trivy-report.json
     expire_in: 28 days
+
+package-jar:
+  stage: package
+  image: maven:3.9.13-eclipse-temurin-21
+  script:
+    - mvn $MAVEN_CLI_OPTS package -DskipTests
+  artifacts:
+    paths:
+      - target/*.jar
+    expire_in: 1 day
+
+docker-build:
+  stage: build
+  image: docker:27
+  services:
+    - docker:27-dind
+#  tags:
+#    - saas-linux-small-amd64
+  needs:
+    - job: package-jar
+      artifacts: true
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
+  script:
+    - docker build -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA" .
+#    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA"
 
 # included in test stage
 include:
