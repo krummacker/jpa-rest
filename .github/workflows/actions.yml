@@ -28,6 +28,18 @@ jobs:
           OSS_INDEX_USERNAME: ${{ secrets.OSS_INDEX_USERNAME }}
           OSS_INDEX_PASSWORD: ${{ secrets.OSS_INDEX_PASSWORD }}
         run: |
+          mkdir -p ~/.m2
+          cat > ~/.m2/settings.xml <<EOF
+          <settings>
+            <servers>
+              <server>
+                <id>ossindex</id>
+                <username>${{ secrets.OSS_INDEX_USERNAME }}</username>
+                <password>${{ secrets.OSS_INDEX_PASSWORD }}</password>
+              </server>
+            </servers>
+          </settings>
+          EOF
           mvn -DnvdApiKey=$NVD_API_KEY -DnvdValidForHours=0 -DnvdApiDelay=5000 org.owasp:dependency-check-maven:check
       - name: Archive dependency check results
         uses: actions/upload-artifact@v6
