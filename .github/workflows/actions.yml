@@ -23,8 +23,6 @@ jobs:
           mvn test
       - name: Run OWASP dependency-check
         shell: bash
-        env:
-          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
         run: |
           mkdir -p ~/.m2
           cat > ~/.m2/settings.xml <<EOF
@@ -38,7 +36,7 @@ jobs:
             </servers>
           </settings>
           EOF
-          mvn -DnvdApiKey=$NVD_API_KEY -DnvdValidForHours=0 -DnvdApiDelay=5000 org.owasp:dependency-check-maven:check
+          mvn -DnvdApiKey=${{ secrets.NVD_API_KEY }} -DnvdValidForHours=0 -DnvdApiDelay=5000 org.owasp:dependency-check-maven:check
       - name: Archive dependency check results
         uses: actions/upload-artifact@v6
         with:
