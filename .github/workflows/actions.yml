@@ -9,7 +9,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  Check:
+  test:
     runs-on: ubuntu-24.04
     steps:
       - name: Check out code
@@ -29,6 +29,18 @@ jobs:
         shell: bash
         run: |
           mvn test
+
+  dependency-check:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v6
+      - name: Set up Java and Maven cache
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+          cache: 'maven'
       - name: Run OWASP dependency-check
         shell: bash
         run: |
